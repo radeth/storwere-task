@@ -1,22 +1,46 @@
 package com.company.model;
 
+import java.util.List;
+
 public class CommandModel {
-    private String command;
-    private Long value;
+    private Long startNumber;
+    private Long output;
 
-    public String getCommand() {
-        return command;
+    public CommandModel(Long startNumber) {
+        output = startNumber;
     }
 
-    public void setCommand(String command) {
-        this.command = command;
+    public Long getStartNumber() {
+        return startNumber;
     }
 
-    public Long getValue() {
-        return value;
+    public void setStartNumber(Long startNumber) {
+        this.startNumber = startNumber;
     }
 
-    public void setValue(Long value) {
-        this.value = value;
+    public Long getOutput() {
+        return output;
     }
+
+    public void setOutput(Long output) {
+        this.output = output;
+    }
+
+    public void add(Long value) {
+        output = output + value;
+    }
+
+    public void multiple(Long value) {
+        output = output * value;
+    }
+
+    public void divide(Long value) {
+        output = output - value;
+    }
+
+    public void subtract(Long value) {
+        output = output / value;
+    }
+
+
 }
