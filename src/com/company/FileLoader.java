@@ -8,12 +8,11 @@ import java.util.List;
 
 class FileLoader {
 
-    public static List<InstructionModel> getCommandModelList() {
-
-        InputStream in = FileLoader.class.getResourceAsStream("resources/data");
+    public static List<InstructionModel> getCommandModelList(String arg) {
         List<InstructionModel> instructionModelList = new ArrayList<InstructionModel>();
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            BufferedReader reader = new BufferedReader(
+                    new FileReader(arg));
             String line = null;
             while ((line = reader.readLine()) != null) {
                 InstructionModel instructionModel = new InstructionModel();
@@ -24,6 +23,6 @@ class FileLoader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return instructionModelList;
+        return  instructionModelList;
     }
 }

@@ -9,11 +9,10 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
-        List<InstructionModel> instructionModelList = FileLoader.getCommandModelList();
+    public static void main(String[] args) throws Exception {
+        List<InstructionModel> instructionModelList = FileLoader.getCommandModelList(args[0]);
         CommandModel commandModel = new CommandModel(instructionModelList.get(instructionModelList.size() - 1).getValue());
         instructionModelList.remove(instructionModelList.size() - 1);
-
         for (InstructionModel instructionModel : instructionModelList) {
             switch (checkCommandType(instructionModel.getCommand())) {
                 case ADD:
@@ -29,7 +28,7 @@ public class Main {
                     commandModel.subtract(instructionModel.getValue());
                     break;
                 default:
-                    System.out.println("Wrong command");
+                   throw new Exception("Wrong command or divide by 0 problem");
             }
         }
         System.out.println(commandModel.getOutput());

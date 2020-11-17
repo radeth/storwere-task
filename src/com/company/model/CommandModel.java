@@ -35,11 +35,11 @@ public class CommandModel {
     }
 
     public void divide(Long value) {
-        output = output - value;
+        output = output / value;
     }
 
     public void subtract(Long value) {
-        output = output / value;
+        output = output - value;
     }
 
 
