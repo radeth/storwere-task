@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class FileLoader {
+public class FileLoader {
 
     public static List<InstructionModel> getCommandModelList(String arg) {
         List<InstructionModel> instructionModelList = new ArrayList<InstructionModel>();

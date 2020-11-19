@@ -10,44 +10,15 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        List<InstructionModel> instructionModelList = FileLoader.getCommandModelList(args[0]);
-        CommandModel commandModel = new CommandModel(instructionModelList.get(instructionModelList.size() - 1).getValue());
-        instructionModelList.remove(instructionModelList.size() - 1);
-        for (InstructionModel instructionModel : instructionModelList) {
-            switch (checkCommandType(instructionModel.getCommand())) {
-                case ADD:
-                    commandModel.add(instructionModel.getValue());
-                    break;
-                case MULTIPLE:
-                    commandModel.multiple(instructionModel.getValue());
-                    break;
-                case DIVIDE:
-                    commandModel.divide(instructionModel.getValue());
-                    break;
-                case SUBTRACT:
-                    commandModel.subtract(instructionModel.getValue());
-                    break;
-                default:
-                   throw new Exception("Wrong command or divide by 0 problem");
-            }
+        if(args.length == 1){
+            List<InstructionModel> instructionModelList = FileLoader.getCommandModelList(args[0]);
+            System.out.println(InstructionService.getResult(instructionModelList));
+        }else{
+            throw new Exception("You have to pass the argument");
         }
-        System.out.println(commandModel.getOutput());
+
     }
 
-    private static CommandType checkCommandType(String command) {
-        if (command.equals("add")) {
-            return CommandType.ADD;
-        } else if (command.equals("multiply")) {
-            return CommandType.MULTIPLE;
-        } else if (command.equals("divide")) {
-            return CommandType.DIVIDE;
-        } else if (command.equals("subtract")) {
-            return CommandType.SUBTRACT;
-        } else if (command.equals("apply")) {
-            return CommandType.APPLY;
-        } else {
-            return CommandType.INCORRECT;
-        }
-    }
+
 
 }
